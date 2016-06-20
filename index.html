@@ -1,0 +1,269 @@
+<!-- 
+FACULDADE DE CIÊNCIAS SOCIAIS APLICADAS
+Aluno: Philippe Anderson Alves dos Santos
+Professor: Brunno Dias
+Disciplina: Laboratorio Avançado de Jogos
+
+//----------------------------------------
+
+- Sobre o A-Frame : A-Frame é um framework open-source para a 
+criação de experiências de realidade virtual 3D na web. Podendo
+ser acessada de aparelhos Mobile, de preferencia com Gyroscope
+para uma melhor esperiencia, ou mesmo de Tabletes, PC, etc.
+
+Experiencia: em tres dias de teste
+
+- Pontos positivos - Apesar de eu não ter tanta intimidade com as linguagens
+aqui ultilizadas e frameworks em geral, ele se mostrou ser bastante maleavel 
+e de facil compreenção se você já uma certa intimidade com html e 
+javascript, que possibilita a criação de pequenas cenas, uma melhor interação 
+com os navegadores, "com relação a testes e tudo mais", e tem otimas funções
+em html que evita a necessidade do javascript para certos eventos.
+ 
+- Pontos Negativos - Acredito que por conta do pouco tempo do "lancamento",
+Ele tem muito pouco materialna Web para o desenvolvimento, e você fica meio 
+que refem a API. De inicio achei meio confusa a forma de ultilizar as Funções
+Init e Update.
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>scene 1 - A-Frame</title>
+    <meta name="description" content="Hello, World! • A-Frame">
+	<script src="_library/aframe.js"></script>
+	<script src="_javascript/actions.js"></script>
+	<link rel="stylesheet" href="_css/estilo.css" />
+    <!-- <script src="https://aframe.io/releases/0.2.0/aframe.js"></script> ** TO GET ARQUIVE .JS "LIBRARY" ONLINE ** -->
+	<!-- <script src="aframe.js"></script>  ** OR BY CALLING THE OWN .JS LIBRARY ** -->
+	
+  </head>
+  <body>
+    <a-scene>
+	
+		<!-- <h1 class="button"><a href="https://www.facebook.com/lippe.anderson" target="_blank" >made by Philippe</a></h1> -->
+		
+		<a-assets>
+			<img id="texture" src="_assets/_textures/box.png" >
+			<img id="floor" src="_assets/_textures/xadrez.jpg" >
+			<img id="muzzle" src="_assets/_textures/muzzle.png" >
+			<img id="moon" src="_assets/_textures/moon.jpg" >
+			<img id="sky" src="_assets/_textures/sky.jpg" >
+			<img id="planet" src="_assets/_textures/planet.jpg" >
+			<img id="housetxt" src="_assets/_obj_model/_house/houserender.png" >
+			
+			<audio id="backsound" src="_audio/sound_master_loop.mp3" >
+			<audio id="shootgun" src="_audio/gunshot.ogg" >	
+
+			<a-asset-item id="crate-obj" src="_assets/_obj_model/_house/houserender.obj"></a-asset-item>
+			<a-asset-item id="crate-mtl" src="_assets/_obj_model/_house/houserender.mtl"></a-asset-item>
+
+			<video id="acdc" preload="auto"
+               src="https://ucarecdn.com/4130c599-445f-4e76-9052-49978e972641/"
+               width="160" height="90" 
+			   autoplay 
+			   loop="true"
+               crossOrigin="anonymous">
+			</video>
+			
+			
+		</a-assets>
+		
+		
+		<a-box 
+			width="1" 
+			height="1" 
+			depth="1"
+			position="0 0 0" 
+			rotation="0 0 0" 
+			scale="1 1 1"
+			color="#FFF"
+			src="#texture">
+			
+			<a-animation 
+				attribute="rotation" 
+				begin="click" 
+				to="0 360 0" >
+			</a-animation>	
+
+			<a-event name="mouseenter" scale="1.2 1.2 1.2" ></a-event>
+			<a-event name="mouseleave" scale="1 1 1" ></a-event>
+		</a-box>
+		
+		<a-entity 
+			sound="src: _audio/sound_master_loop.mp3; 
+			autoplay: true; 
+			loop: true ">
+		</a-entity>
+		
+		<a-entity position="0 1.8 4">		
+			<a-camera id="camera">
+			
+				<a-box 
+					position="0.5 -1 0" 
+					rotation="0 0 0" 
+					width="0.2" 
+					height="0.3" 
+					depth="3" 
+					scale="1 1 1" 
+					color="#796C7F" 
+				></a-box>
+				
+				<a-cone id="muzzlecone"
+					position="0.5 -1 -2" 
+					rotation="90 0 0" 
+					radius-bottom="0.7" 
+					radius-top="0.1" 
+					src="#muzzle" 
+					transparent="true" 
+					opacity="0.5"
+					visible="false"
+					
+				></a-cone>
+				
+				<a-light 
+					id="lightshot"
+					type="point" 
+					color="yellow" 
+					position="0.5 -1 -2"
+					visible="false"
+				></a-light>
+				
+				<a-cursor 
+					color="red"
+				></a-cursor>
+				
+			</a-camera>			
+		</a-entity>
+		
+		<!-- ############################################### -->
+		
+		
+		<!-- <a-light> Luz primitiva ajustada de acordo com a cena-->
+		<a-light 
+			type="ambient" 
+			color="#333"
+			intensity="1.0"
+		></a-light>
+		
+		<a-light 
+			type="spot" 
+			color="white" 
+			position="0 20 0" 
+			look-at="a-box"
+			intensity="0.7"
+		></a-light>
+		
+		
+		
+		
+		<!-- <a-obj-model> -->
+		<a-obj-model 
+			src="#crate-obj" 
+			mtl="#crate-mtl"
+			position="0 0 -40">
+		</a-obj-model>
+		     
+
+		
+		<!-- <a-plane> O Plane cria superficies planas-->
+		<a-plane 			
+			position="0 -1 0"
+			rotation="-90 0 0" 
+			width="50" 
+			height="50" 
+			color="#FFF"
+			src="#floor"
+		></a-plane>
+		
+		<!-- <a-ring> cria uma forma de anel ou disco. --><!--  -->
+		<a-ring 
+			position="-11 1 -11" 
+			rotation="0 0 0" 
+			color="teal" 
+			radius-inner="1" 
+			radius-outer="2" 
+			segments-theta="6"
+		></a-ring>
+		
+		<a-ring 
+			position="0 1 -5" 
+			rotation="0 0 0" 
+			color="teal" 
+			radius-inner="1" 
+			radius-outer="2"
+	
+		></a-ring>
+		
+		<a-ring 
+			position="11 1 -11" 
+			rotation="0 0 -30" 
+			color="teal" 
+			radius-inner="1.5" 
+			radius-outer="3"
+			segments-theta="3"
+		></a-ring>
+		
+		<!-- <a-sky> Pode ser uma cena adicionada ao fundo ou uma imagem em 360 -->
+		<a-sky 
+			src="#sky"
+			radius="1000"
+			rotation="0 0 0">
+			
+			<a-animation 
+				attribute="rotation" from="0 -30 0" to="0 330 0"
+				dur="450000"
+				easing="linear"
+				repeat="infinite"
+			></a-animation>
+			
+		</a-sky>
+		
+		<!-- <a-sphere> Cria forma esfericas ou poliedros-->
+		<a-sphere 
+			src="#planet" 
+			position="0 11 -11" 
+			rotation="0 0 -30"  
+			radius="2"
+		></a-sphere>
+		
+		
+		<!-- <a-torus> -->
+		<a-torus 
+			position="0 11 -11" 
+			rotation="0 0 0" 
+			segments-radial="50" 
+			color="gray" 
+			arc="300"
+			segments-tubular="20" 
+			radius="3"
+			radius-tubular="0.2">
+
+			
+			
+			<a-animation 
+				attribute="rotation"
+				from="0 0 -30" to="0 0 330"
+				dur="25000"
+				easing="linear"
+				repeat="infinite"
+			></a-animation>
+			
+		</a-torus>
+		
+		<!-- <a-video> -->
+		<a-entity 
+			material="shader: flat; src: #acdc"
+                geometry="primitive: plane; width: 16; height: 9;"
+                position="-25 4 -10"
+                rotation="0 90 0">
+      </a-entity>
+		
+		<!-- <a-videosphere> -->
+		
+		
+		
+    </a-scene>
+  </body>
+</html>

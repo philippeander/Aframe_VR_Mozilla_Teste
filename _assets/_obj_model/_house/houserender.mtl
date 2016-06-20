@@ -1,0 +1,71 @@
+# Blender MTL File: 'House Render.blend'
+# Material Count: 6
+
+newmtl FINAL
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Modelagem\HOUSE\ttexture.png
+
+newmtl Material.003
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Modelagem\HOUSE\chão.png
+map_d D:\\Modelagem\\HOUSE\\Tree.png
+
+newmtl Material.003_Untitled
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Modelagem\HOUSE\Tree.png
+map_d D:\\Modelagem\\HOUSE\\Tree.png
+
+newmtl Material.004
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.147575 0.079399 0.034508
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Modelagem\HOUSE\chão.png
+
+newmtl Material.004_NONE
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.147575 0.079399 0.034508
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\\Modelagem\\HOUSE\\chão.png
+
+newmtl Material.005
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.002334 0.050976 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Modelagem\HOUSE\grass.png
+map_d D:\\Modelagem\\HOUSE\\grass.png
